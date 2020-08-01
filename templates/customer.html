@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="customerApp">
+<head>
+	<title></title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+
+	<script type="text/javascript">
+		
+	var customerApp = angular.module('customerApp', []);
+	customerApp.controller('customerController', function($scope, $http){
+		$scope.test = "Test"
+		$http.get('http://localhost:5000/customers').then(
+			function successCallback(response){
+				console.log(response.data)
+			}, function failureCallback(response){
+				console.log(response)
+		});
+	});
+
+	</script>
+
+</head>
+<body ng-controller="customerController">
+	
+	<table>
+		<tr ng-repeat="customer in customers">
+			
+		</tr>
+	</table>
+
+</body>
+</html>
